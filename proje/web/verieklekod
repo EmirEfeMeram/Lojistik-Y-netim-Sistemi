@@ -1,0 +1,243 @@
+soru-1
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>birinci soru</title>
+<script language="javascript">
+window.onload=function() {
+var sabitmaliyet=500000;
+var degiskenmaliyet=14000;
+var omur=17;
+var toplamgelir=1700000;
+var karzarar=(toplamgelir-(sabitmaliyet+(degiskenmaliyet*omur)))+"$"
+
+document.getElementById("sabitmaliyet").innerHTML="sabit maliyet: "+sabitmaliyet+"$";
+document.getElementById("degiskenmaliyet").innerHTML="yıllık degisken maliyet: "+degiskenmaliyet+"$";
+document.getElementById("omur").innerHTML="yatırımın omru: "+omur+" YIL";
+document.getElementById("toplamgelir").innerHTML="yatırmın toplam geliri: "+toplamgelir+"$";
+document.getElementById("sonuc").innerHTML="yatırımın kar/zarar miktarı: "+karzarar;
+
+}
+</script>
+</head>
+
+<body>
+<div id=sabitmaliyet></div>
+<div id=degiskenmaliyet></div>
+<div id=omur></div>
+<div id=toplamgelir></div>
+<div id="sonuc"></div>
+</body>
+</html>
+soru-2
+#calisankayit.php
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ikincisoru calisankayit</title>
+</head>
+<body>
+<form class="" action="veriekle.php" method="post" >
+<div id="degerler">
+<h4>Degerleri Girin</h4>
+<td>Ad</td>
+<input type="text" name="adi" id="adi">
+<td>Soyad</td>
+<input type="text" name="soyadi" id="soyadi" >
+<td>Maas</td>
+<input type="number" name="maas" id="maas" min="500">
+<td>Departman</td>
+<input type="text" name="departman" id="departman" >
+</div>
+<input type="submit" name="gonder" value="gonder" />
+</form>
+
+
+</body>
+</html>
+#veriekle.php
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ikinci soru veriekle</title>
+<?php
+$servername = "localhost";
+$database = "Database";
+$username = "root";
+$password = "";
+$conn = mysqli_connect($servername, $username, $password, $database);
+mysqli_query($conn,"SET CHARACTER SET 'utf8'");
+mysqli_query($conn,"SET SESSION collation_connection ='utf8_unicode_ci'");
+
+if (!$conn) {
+die("Connection failed: " . mysqli_connect_error());
+}
+$ad = $_POST["ad"];
+$soyad = $_POST["soyad"];
+$maas = $_POST["maas"];
+$departman = $_POST["departman"];
+
+
+$sql = "INSERT INTO calisanlar(ad,soyad,maas,departman) values('$ad','$soyad','$maas','$departman')";
+if (mysqli_query($conn, $sql)) {
+} else {
+echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+?>
+</head>
+<body>
+<div>Kayıt başarıyla tamamlandı</div>
+</body>
+</html>
+soru-3
+#bargrafik.php
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ucuncu soru grafik</title>
+<?php
+$servername = "localhost";
+$database = "Database";
+$username = "root";
+$password = "";
+$conn = mysqli_connect($servername, $username, $password, $database);
+mysqli_query($conn,"SET CHARACTER SET 'utf8'");
+mysqli_query($conn,"SET SESSION collation_connection ='utf8_unicode_ci'");
+
+if (!$conn) {
+die("Connection failed: " . mysqli_connect_error());
+}
+$sql = "INSERT INTO calisanlar(ad,soyad,maas,departman) values('$ad','$soyad','$maas','$departman')";
+if (mysqli_query($conn, $sql)) {
+} else {
+echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+?>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+
+google.charts.load('current', {'packages':['corechart']});
+
+
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+var jsonData = $.ajax({
+url: "getData.php",
+dataType: "json",
+async: false
+}).responseText;
+var data = new google.visualization.DataTable(jsonData);
+var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+chart.draw(data, {width: 400, height: 240});
+}
+</script>
+</head>
+<body>
+<div id="chart_div"></div>
+</body>
+</html>
+#getData.php
+<?php
+$servername = "localhost";
+$database = "Database";
+$username = "root";
+$password = "";
+$conn = mysqli_connect($servername, $username, $password, $database);
+mysqli_query($conn,"SET CHARACTER SET 'utf8'");
+mysqli_query($conn,"SET SESSION collation_connection ='utf8_unicode_ci'");
+
+if (!$conn) {
+die("Connection failed: " . mysqli_connect_error());
+}
+$sth = mysqli_query("SELECT departman_ad,AVG(maas) as ortalama_maas FROM calisanlar GROUP BY(departman_ad)");
+$flag = true;
+$table = array();
+$table['cols'] = array(
+array('label' => 'Departman', 'type' => 'string'),
+array('label' => 'Ortalama Maas', 'type' => 'number')
+
+);
+
+$rows = array();
+while($r = mysqli_fetch_assoc($sth)) {
+$temp = array();
+// the following line will be used to slice the Pie chart
+$temp[] = array('v' => (string) $r['departman_ad']);
+
+// Values of each slice
+$temp[] = array('v' => (int) $r['ortalama_maas']);
+$rows[] = array('c' => $temp);
+}
+
+$table['rows'] = $rows;
+$jsonTable = json_encode($table);
+echo $jsonTable;
+
+?>
+soru-4
+#form.php
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<title>dorduncu soru</title>
+</head>
+<body>
+<form class="" action="soru4finalsonuc.php" method="post" >
+<div id="degerler">
+<h4>Degerleri Girin</h4>
+<td>Toplam Satis Miktari</td>
+<input type="number" name="Tsm" id="Tsm"><br>
+<td>Hammadde Maliyeti</td>
+<input type="number" name="Hm" id="Hm" ><br>
+<td>Bakim Onarim Giderleri</td>
+<input type="number" name="Bog" id="Bog" ><br>
+<td>Sevkiyat Giderleri</td>
+<input type="number" name="Sg" id="Sg" ><br>
+<td>Satın Alınan Hizmet Giderleri</td>
+<input type="number" name="Sahg" id="Sahg" ><br>
+</div>
+<input type="submit" name="gonder" value="Katma Deger Cirosunu Hesapla" />
+</form>
+</body>
+</html>
+#cevap.php
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>4.soru-cevap</title>
+</head>
+<body>
+<div>
+<?php
+$Tsm = $_POST["Tsm"];
+$Hm = $_POST["Hm"];
+$Bog = $_POST["Bog"];
+$Sg = $_POST["Sg"];
+$Sahg = $_POST["Sahg"];
+$Kdc=$Tsm-($Hm+$Bog+$Sg+$Sahg);
+if($Kdc<500){
+echo "Katma deger cirosu: ".$Kdc." İsletme Katma Deger cirosu düsük";
+}
+else if (499<$Kdc && $Kdc<1000){
+echo "Katma deger cirosu: ".$Kdc." İsletme Katma Deger cirosu normal";
+
+}
+else if ($Kdc>999){
+echo "Katma deger cirosu: ".$Kdc." İsletme Katma Deger cirosu yüksek";
+}
+
+
+?>
+</div>
+</body>
+</html>

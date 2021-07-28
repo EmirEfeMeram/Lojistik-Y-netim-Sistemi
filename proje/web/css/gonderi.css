@@ -1,0 +1,280 @@
+/*--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+
+/*-- common css --*/
+
+html,
+body {
+	margin: 0;
+	font-size: 100%;
+	font-family: 'Exo', sans-serif;
+	background: #fff;
+}
+
+body a {
+	text-decoration: none;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+input[type="button"],
+button[type="submit"] {
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	font-family: 'Exo', sans-serif;
+	font-weight: 700;
+}
+
+p {
+	margin: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+label {
+	margin: 0;
+}
+
+button:focus {
+	outline: transparent;
+	outline: transparent;
+}
+
+.form-control:focus {
+	box-shadow: none;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+	box-shadow: none;
+}
+
+ul li {
+	list-style: none;
+}
+
+address {
+	margin-bottom: 0rem;
+}
+
+/*--// common css --*/
+
+.outer-w3-agile {
+	padding: 2em 1em;
+	-webkit-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.25);
+	float: right;
+	width: 750px;
+	height: 390px;
+	position: relative;
+
+	top: 50px;
+}
+
+.btn-style {
+	background: #108143;
+	color: #fff;
+	border-color: #159b7e;
+}
+
+.btn-style:hover {
+	background: #20b39f;
+}
+
+.paragraph-agileits-w3layouts {
+	font-size: 14px;
+	letter-spacing: 1px;
+	line-height: 31px;
+	color: #550d99;
+}
+
+.sub-title-w3-agileits {
+	font-size: 1.7em;
+	letter-spacing: 2px;
+	color: #4c6ef5;
+	font-weight: 600;
+}
+
+h2.main-title-w3layouts {
+	font-size: 3.9em;
+	letter-spacing: 4px;
+	color: #292929;
+	text-shadow: 2px 2px 3px #838386;
+	text-transform: capitalize;
+}
+
+h4.tittle-w3-agileits {
+	font-size: 2em;
+	letter-spacing: 1.5px;
+	font-weight: 600;
+	color: #3e3e3e;
+	text-align: center;
+}
+
+/*-- profile details --*/
+
+.profile-bg {
+	border: 1px solid #5d7cf7;
+	border-left: none;
+	border-right: none;
+	background: url(../images/menu1.jpg)no-repeat 0px 0px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-ms-background-size: cover;
+	background-size: cover;
+	min-height: 150px;
+}
+
+/*--// profile details --*/
+
+
+
+/*----------------------------------------
+    Error Page
+------------------------------------------*/
+
+h4.error-title-agileits {
+	font-size: 8.5em;
+	font-weight: bold;
+}
+
+.errorleft {
+	border-right: 3px solid #f75757;
+}
+
+p.error-text {
+	font-size: 17px;
+	letter-spacing: 1px;
+	color: #868686;
+	font-weight: normal;
+	line-height: 35px;
+	margin: 1em 0em 2em;
+}
+
+span.error-subtext-w3l {
+	font-size: 36px;
+	display: inline-block;
+	color: #404040;
+}
+
+a.error-w3l-btn,
+button.error-w3l-btn {
+	padding: 0.6em .5em;
+	font-size: 0.9em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: #fff;
+	font-weight: 500;
+	background: #f75757;
+	border: none;
+}
+
+a.error-w3l-btn:hover,
+button.error-w3l-btn:hover {
+	text-transform: uppercase;
+	color: #fff;
+	background: #4c6ef5;
+	border: none;
+}
+
+p.error-text a,
+p.paragraph-agileits-w3layouts a,
+h1.paragraph-agileits-w3layouts a {
+	display: inline-block;
+	color: #f75757;
+	font-family: 'Exo', sans-serif;
+	font-weight: 400;
+}
+
+p.error-text a:hover,
+p.paragraph-agileits-w3layouts a:hover,
+h1.paragraph-agileits-w3layouts a:hover {
+	color: #4c6ef5;
+}
+
+.error-search-form input.form-control {
+	width: 70%;
+	background: rgba(76, 110, 245, 0.30);
+	border: none;
+	font-size: 16px;
+	letter-spacing: 0.8px;
+	color: #000;
+}
+
+.error-search-form input.form-control {
+	width: 70%;
+	background: rgba(76, 110, 245, 0.27);
+	border: none;
+	font-size: 15px;
+	letter-spacing: 0.8px;
+	color: #000;
+	padding: 8px 15px;
+	border-radius: 0px;
+}
+
+.error-search-form {
+	padding: 0.3em;
+	border: 6px solid #cacaca;
+}
+
+.error-search-form button.btn {
+	width: 30%;
+	background: #4c6ef5;
+	border: none;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	color: #fff;
+	border-radius: 0px;
+	box-shadow: none;
+	padding: 8px 5px;
+}
+
+.error-search-form button.btn:hover {
+	background: #f75757;
+}
+
+.error-search-form button.btn:focus {
+	background: #f75757;
+	box-shadow: none;
+}
+
+/*----------------------------------------//
+    Error Page
+------------------------------------------*/
+
+/*----------------------------------------
+
+
+
+
+
+/*--//responsive--*/
